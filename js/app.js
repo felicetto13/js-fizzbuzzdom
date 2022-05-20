@@ -35,20 +35,49 @@ Consigli del giorno:
             -SE IL NUMERO è MULTIPLO DI 5
                 allora stampa "Buzz"
             -ALTRIMENTI stampa i
+    
+    MILESTONE 2
+    Creiamo un container e ad ogni passaggio inseriamo i dati all'interno della pagina HTML
+
+    MILESTONE 3
+
+    Stilizzare la tabella cambiando gli stili quando abbiamo i valori "fizz", "buzz", "FizzBuzz"
  */
 
 
 let text = "";
-
+const container = document.createElement("div")
+container.classList.add("container","p-5");
+container.id = "container";
+const h1 = document.createElement("h1")
+h1.classList.add("text-center","text-white","m-5");
+h1.append("FizzBuzzDOM");
+document.getElementById("main-content").append(h1);
+document.getElementById("main-content").append(container);
+const row = document.createElement("div")
+row.id = "row";
+row.classList.add("row","gap-3","justify-content-center");
+document.getElementById("container").append(row)
 for(let i=1;i<=100;i++){
+    let col= document.createElement("div");
+col.id ="col"
+col.classList.add("col-2","d-flex","align-items-center","justify-content-center","square");
+document.getElementById("row").appendChild(col);
+let classe="";
     if ((i % 3 == 0) && (i % 5 == 0)) {
         text = "FizzBuzz";
+        classe ="bg-danger";
     } else if (i % 3 == 0) {
         text ="Fizz";
+        classe ="bg-success";
     }else if (i % 5 == 0) {
         text="Buzz";
+        classe ="bg-warning";
     }else {
         text = i.toString();
+        classe ="bg-primary";
     }
+    col.classList.add(classe);
+    col.append(text)
     console.log(text);
 }
